@@ -30,3 +30,4 @@ spec:
     - name: nginx
       image: docker.io/nginx
 
+## Always maintain unique labels.
