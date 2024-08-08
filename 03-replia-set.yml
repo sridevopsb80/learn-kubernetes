@@ -17,4 +17,16 @@ spec:
       containers:
       - name: nginx
         image: docker.io/nginx
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rs-01-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx
+      image: docker.io/nginx
 
