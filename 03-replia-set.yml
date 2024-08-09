@@ -4,6 +4,8 @@ metadata:
   name: rs-01
   labels:
     app: nginx
+  annotations:
+    controller.kubernetes.io/pod-deletion-cost: "10"
 spec:
   replicas: 3
   selector:
