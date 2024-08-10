@@ -69,7 +69,7 @@ metadata:
 spec:
   selector:
     appName: nginx
-    example: service
+    type: deploy
   clusterIP: None
   ports:
     - protocol: TCP
