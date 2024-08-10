@@ -81,18 +81,18 @@ kind: Deployment
 metadata:
   name: deploy-06
   labels:
-    app: nginx
+    appName: nginx
     type: deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      appName: nginx
       type: deploy
   template:
     metadata:
       labels:
-        app: nginx
+        appName: nginx
         type: deploy
     spec:
       containers:
