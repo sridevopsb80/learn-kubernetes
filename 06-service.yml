@@ -69,9 +69,36 @@ metadata:
 spec:
   selector:
     appName: nginx
-    example: service
+    type: deploy
   clusterIP: None
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-06
+  labels:
+    app: nginx
+    type: deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      type: deploy
+  template:
+    metadata:
+      labels:
+        app: nginx
+        type: deploy
+    spec:
+      containers:
+      - name: nginx
+        image: docker.io/nginx:1.24
+
+
+
+
