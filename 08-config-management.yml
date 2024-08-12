@@ -91,7 +91,7 @@ data:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-07-cm-1
+  name: pod-07-cm-2
 spec:
   containers:
     - name: debug
