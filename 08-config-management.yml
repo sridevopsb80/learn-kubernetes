@@ -10,3 +10,32 @@ spec:
       - name: CATALOGUE_HOST
         value: "hello from catalogue"
 
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-07
+data:
+  CATALOGUE_HOST: "catalogue"
+  CART_HOST: "cart"
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-07-cm
+spec:
+  containers:
+    - name: debug
+      image: docker.io/rkalluru/debug
+      env:
+      - name: CATALOGUE_HOST
+        valueFrom:
+          configMapKeyRef:
+            name: cm-07
+            key: CATALOGUE_HOST
+      - name: CART_HOST
+        valueFrom:
+          configMapKeyRef:
+            name: cm-07
+            key: CART_HOST
