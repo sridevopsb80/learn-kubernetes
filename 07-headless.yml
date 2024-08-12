@@ -17,5 +17,16 @@ spec:
       containers:
       - name: nginx
         image: docker.io/rkalluru/nginx:hostname-print
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-07
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 
