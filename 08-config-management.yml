@@ -104,4 +104,26 @@ spec:
       configMap:
         name: cm-07-file
 
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-07-1
+data:
+  password: YWJjZEAxMjM0
 
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-07-secret
+spec:
+  containers:
+    - name: debug
+      image: docker.io/rkalluru/debug
+      env:
+      - name: password
+        valueFrom:
+          secretKeyRef:
+            name: secret-07-1
+            key: password
