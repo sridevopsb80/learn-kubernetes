@@ -73,6 +73,35 @@ data:
     [Install]
     WantedBy=multi-user.target
 
+  cart.service: |
+    [Unit]
+    Description = Cart Service
 
+    [Service]
+    User=roboshop
+    Environment=MONGO={{ secrets.MONGO }}
+    Environment=MONGO_URL="{{ secrets.MONGO_URL }}"
+    ExecStart=/bin/node /app/server.js
+    SyslogIdentifier=cart
+
+    [Install]
+    WantedBy=multi-user.target
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-07-cm-1
+spec:
+  containers:
+    - name: debug
+      image: docker.io/rkalluru/debug
+      volumeMounts:
+      - name: config-volume
+        mountPath: /etc/config
+  volumes:
+    - name: config-volume
+      configMap:
+        name: cm-07-file
 
 
