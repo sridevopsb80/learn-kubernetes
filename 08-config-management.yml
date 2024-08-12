@@ -6,7 +6,7 @@ spec:
   containers:
     - name: debug
       image: docker.io/rkalluru/debug
-    env:
-    - name: CATALOGUE_HOST
-      value: "hello from catalogue"
+      env:
+      - name: CATALOGUE_HOST
+        value: "hello from catalogue"
 
