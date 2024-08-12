@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-07
+spec:
+  containers:
+    - name: debug
+      image: docker.io/rkalluru/debug
+    env:
+    - name: CATALOGUE_HOST
+      value: "hello from catalogue"
+
