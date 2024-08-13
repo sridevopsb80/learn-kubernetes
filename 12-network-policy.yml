@@ -42,26 +42,29 @@ metadata:
   name: allow-only-frontend
   namespace: backend
 spec:
-  podSelector:
-    matchLabels:
-      appType: API
+#   podSelector:
+#     matchLabels:
+#       appType: API
+#   policyTypes:
+#   - Ingress
+#   - Egress
+#   ingress:
+#   - from:
+#     - namespaceSelector:
+#         matchLabels:
+#           project: demo
+#     - podSelector:
+#         matchLabels:
+#           appType: UI
+#     ports:
+#     - protocol: TCP
+#       port: 80
+#   egress:
+#   - {}
+  podSelector: {}
   policyTypes:
   - Ingress
   - Egress
-  ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          project: demo
-    - podSelector:
-        matchLabels:
-          appType: UI
-    ports:
-    - protocol: TCP
-      port: 80
-  egress:
-  - {}
-
 
 
 
