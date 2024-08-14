@@ -11,4 +11,4 @@ spec:
     fsGroup: 2000
   containers:
     - name: nginx
-      image: nginx
+      image: rkalluru/debug
