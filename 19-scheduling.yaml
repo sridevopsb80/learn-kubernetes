@@ -18,10 +18,10 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: appType
+          - key: beta.kubernetes.io/arch
             operator: In
             values:
-            - database1
+            - amd64
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:
