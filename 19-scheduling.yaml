@@ -49,6 +49,7 @@ spec:
             operator: In
             values:
             - S1
+            - S2
         topologyKey: topology.kubernetes.io/zone
 #     podAntiAffinity:
 #       preferredDuringSchedulingIgnoredDuringExecution:
