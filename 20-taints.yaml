@@ -9,3 +9,7 @@ spec:
   - name: nginx
     image: nginx
 #  nodeName: ip-192-168-84-247.ec2.internal
+  tolerations:
+  - key: "appTypes"
+    operator: "Exists"
+    effect: "NoSchedule"
