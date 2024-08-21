@@ -26,10 +26,10 @@ spec:
       - weight: 1
         preference:
           matchExpressions:
-          - key: alpha.eksctl.io/cluster-name
+          - key: topology.kubernetes.io/zone
             operator: In
             values:
-            - test
+            - us-east-1b
   containers:
   - name: with-node-affinity
     image: registry.k8s.io/pause:2.0
