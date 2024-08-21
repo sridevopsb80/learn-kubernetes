@@ -50,7 +50,7 @@ spec:
           - key: security
             operator: In
             values:
-            - S3
+            - S1
         topologyKey: topology.kubernetes.io/zone
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
