@@ -61,7 +61,7 @@ spec:
             - key: security
               operator: In
               values:
-              - S2
+              - S1
           topologyKey: topology.kubernetes.io/zone
   containers:
   - name: with-pod-affinity
