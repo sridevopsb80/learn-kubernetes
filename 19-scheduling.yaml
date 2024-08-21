@@ -50,19 +50,19 @@ spec:
           - key: security
             operator: In
             values:
-            - S1
+            - S3
         topologyKey: topology.kubernetes.io/zone
-#     podAntiAffinity:
-#       preferredDuringSchedulingIgnoredDuringExecution:
-#       - weight: 100
-#         podAffinityTerm:
-#           labelSelector:
-#             matchExpressions:
-#             - key: security
-#               operator: In
-#               values:
-#               - S2
-#           topologyKey: topology.kubernetes.io/zone
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+            - key: security
+              operator: In
+              values:
+              - S2
+          topologyKey: topology.kubernetes.io/zone
   containers:
   - name: with-pod-affinity
     image: registry.k8s.io/pause:2.0
