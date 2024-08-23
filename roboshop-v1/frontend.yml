@@ -26,23 +26,23 @@ spec:
       image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
     env:
     - name: CATALOGUE_HOST
-      value: "Hello from the environment"
+      value: "catalogue"
     - name: CATALOGUE_PORT
-      value: "Such a sweet sorrow"
+      value: "8080"
     - name: USER_HOST
-      value: "Such a sweet sorrow"
+      value: "user"
     - name: USER_PORT
-      value: "Such a sweet sorrow"
+      value: "8080"
     - name: CART_HOST
-      value: "Such a sweet sorrow"
+      value: "cart"
     - name: CART_PORT
-      value: "Such a sweet sorrow"
+      value: "8080"
     - name: SHIPPING_HOST
-      value: "Such a sweet sorrow"
+      value: "shipping"
     - name: SHIPPING_PORT
-      value: "Such a sweet sorrow"
+      value: "8080"
     - name: PAYMENT_HOST
-      value: "Such a sweet sorrow"
+      value: "payment"
     - name: PAYMENT_PORT
-      value: "Such a sweet sorrow"
+      value: "8080"
 
