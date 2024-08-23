@@ -36,8 +36,10 @@ metadata:
   labels:
     appName: shipping
 spec:
+  backoffLimit: 0
   template:
     spec:
+      restartPolicy: Never
       containers:
         - name: app-user
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
@@ -84,4 +86,5 @@ spec:
               value: root
             - name: DB_PASS
               value: RoboShop@1
+
 
