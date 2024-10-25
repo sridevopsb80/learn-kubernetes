@@ -12,15 +12,39 @@ spec:
 
 ---
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: debug1
+---
+apiVersion: v1
 kind: Pod
 metadata:
-  name: debug
+  name: debug1
   labels:
-    appName: debug
+    appName: debug1
 spec:
   containers:
-    - name: debug
+    - name: debug1
       image: rkalluru/debug
+      serviceAccountName: debug1
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: debug2
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug2
+  labels:
+    appName: debug2
+spec:
+  containers:
+    - name: debug1
+      image: rkalluru/debug
+      serviceAccountName: debug2
+
 ---
 # apiVersion: security.istio.io/v1
 # kind: AuthorizationPolicy
@@ -42,6 +66,7 @@ spec:
   - from:
     - source:
         namespaces: ["default"]
+        principals: ["cluster.local/ns/default/sa/debug1"]
   - to:
     - operation:
         paths: ["/"]
