@@ -99,22 +99,22 @@ spec:
 #   - from:
 #     - source:
 #         notPrincipals: ["*"]
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: test
-  labels:
-    istio-injection: enabled
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: debug
-  namespace: test
-  labels:
-    appName: debug
-spec:
-  containers:
-    - name: debug
-      image: rkalluru/debug
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: test
+#   labels:
+#     istio-injection: enabled
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: debug
+#   namespace: test
+#   labels:
+#     appName: debug
+# spec:
+#   containers:
+#     - name: debug
+#       image: rkalluru/debug
