@@ -39,6 +39,9 @@ spec:
       appName: debug
   action: ALLOW
   rules:
+  - from:
+    - source:
+        namespaces: ["default"]
   - to:
     - operation:
         paths: ["/"]
