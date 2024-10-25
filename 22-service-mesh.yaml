@@ -85,16 +85,16 @@ spec:
     - operation:
         paths: ["/"]
 ---
-# apiVersion: security.istio.io/v1
-# kind: AuthorizationPolicy
-# metadata:
-#   name: deny-others
-#   namespace: default
-# spec:
-#   selector:
-#     matchLabels:
-#       appName: nginx
-#   action: DENY
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-others
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      appName: nginx
+  action: DENY
 #   rules:
 #   - from:
 #     - source:
