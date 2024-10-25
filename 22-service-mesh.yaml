@@ -83,6 +83,8 @@ spec:
     matchLabels:
       appName: nginx
   action: DENY
+  rules:
+  - {}
 ---
 apiVersion: v1
 kind: Namespace
