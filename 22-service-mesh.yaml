@@ -80,7 +80,7 @@ spec:
   rules:
   - from:
     - source:
-        Principals: ["cluster.local/ns/default/sa/debug1"]
+        principals: ["cluster.local/ns/default/sa/debug1"]
   - to:
     - operation:
         paths: ["/"]
