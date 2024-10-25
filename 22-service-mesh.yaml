@@ -3,6 +3,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
+  labels:
+    appName: nginx
 spec:
   containers:
     - name: nginx
@@ -13,14 +15,31 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: debug
+  labels:
+    appName: debug
 spec:
   containers:
     - name: debug
       image: rkalluru/debug
 ---
+# apiVersion: security.istio.io/v1
+# kind: AuthorizationPolicy
+# metadata:
+#  name: allow-nothing
+# spec:
+#   {}
+---
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
- name: allow-nothing
+ name: allow-debug
 spec:
-  {}
+  selector:
+    matchLabels:
+      appName: debug
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        paths: ["/"]
+
