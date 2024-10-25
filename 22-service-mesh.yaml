@@ -84,7 +84,10 @@ spec:
       appName: nginx
   action: DENY
   rules:
-  - {}
+  - from:
+    - source:
+        namespaces: ["*"]
+        principals: ["*"] # Deny all principals except those allowed in allow-debug policy
 ---
 apiVersion: v1
 kind: Namespace
