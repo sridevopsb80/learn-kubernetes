@@ -23,10 +23,11 @@ metadata:
   labels:
     appName: debug1
 spec:
+  serviceAccountName: debug1
   containers:
     - name: debug1
       image: rkalluru/debug
-      serviceAccountName: debug1
+
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -40,10 +41,11 @@ metadata:
   labels:
     appName: debug2
 spec:
+  serviceAccountName: debug2
   containers:
     - name: debug1
       image: rkalluru/debug
-      serviceAccountName: debug2
+
 
 ---
 # apiVersion: security.istio.io/v1
