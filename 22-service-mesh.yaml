@@ -63,30 +63,29 @@ spec:
   selector:
     matchLabels:
       appName: nginx
-  action: ALLOW
-  rules:
-  - from:
-    - source:
-        namespaces: ["default"]
-        principals: ["cluster.local/ns/default/sa/debug1"]
-  - to:
-    - operation:
-        paths: ["/"]
----
-apiVersion: security.istio.io/v1
-kind: AuthorizationPolicy
-metadata:
-  name: deny-others
-  namespace: default
-spec:
-  selector:
-    matchLabels:
-      appName: nginx
   action: DENY
   rules:
   - from:
     - source:
-        notPrincipals: ["*"]
+        notPrincipals: ["cluster.local/ns/default/sa/debug1"]
+  - to:
+    - operation:
+        paths: ["/"]
+---
+# apiVersion: security.istio.io/v1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: deny-others
+#   namespace: default
+# spec:
+#   selector:
+#     matchLabels:
+#       appName: nginx
+#   action: DENY
+#   rules:
+#   - from:
+#     - source:
+#         notPrincipals: ["*"]
 ---
 apiVersion: v1
 kind: Namespace
