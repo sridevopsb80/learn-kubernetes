@@ -34,14 +34,13 @@ kind: AuthorizationPolicy
 metadata:
  name: allow-debug
 spec:
-  selector:
-    matchLabels:
-      appName: debug
-  action: ALLOW
+  action: DENY
   rules:
   - from:
     - source:
         namespaces: ["default"]
+    - source:
+        namespaces: ["test"]
   - to:
     - operation:
         paths: ["/"]
