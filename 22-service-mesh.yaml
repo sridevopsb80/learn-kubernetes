@@ -34,7 +34,7 @@ kind: AuthorizationPolicy
 metadata:
  name: allow-debug
 spec:
-  action: DENY
+  action: ALLOW
   rules:
   - from:
     - source:
