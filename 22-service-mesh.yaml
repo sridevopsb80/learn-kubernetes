@@ -43,7 +43,7 @@ metadata:
 spec:
   serviceAccountName: debug2
   containers:
-    - name: debug1
+    - name: debug2
       image: rkalluru/debug
 
 
@@ -72,6 +72,17 @@ spec:
   - to:
     - operation:
         paths: ["/"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-others
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      appName: nginx
+  action: DENY
 ---
 apiVersion: v1
 kind: Namespace
