@@ -86,8 +86,7 @@ spec:
   rules:
   - from:
     - source:
-        namespaces: ["*"]
-        principals: ["*"] # Deny all principals except those allowed in allow-debug policy
+        notPrincipals: ["*"]
 ---
 apiVersion: v1
 kind: Namespace
