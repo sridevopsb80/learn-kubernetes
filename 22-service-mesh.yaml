@@ -76,11 +76,11 @@ spec:
   selector:
     matchLabels:
       appName: nginx
-  action: DENY
+  action: ALLOW
   rules:
   - from:
     - source:
-        notPrincipals: ["cluster.local/ns/default/sa/debug1"]
+        Principals: ["cluster.local/ns/default/sa/debug1"]
   - to:
     - operation:
         paths: ["/"]
