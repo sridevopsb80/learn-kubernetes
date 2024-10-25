@@ -17,3 +17,10 @@ spec:
   containers:
     - name: debug
       image: rkalluru/debug
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+ name: allow-nothing
+spec:
+  {}
