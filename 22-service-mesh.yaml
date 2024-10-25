@@ -95,6 +95,8 @@ spec:
     matchLabels:
       appName: nginx
   action: DENY
+  rules:
+    - {}
 #   rules:
 #   - from:
 #     - source:
