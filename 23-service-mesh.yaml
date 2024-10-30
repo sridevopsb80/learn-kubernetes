@@ -18,7 +18,6 @@ metadata:
 spec:
   selector:
     appName: nginx
-    example: service
   ports:
     - protocol: TCP
       port: 80
