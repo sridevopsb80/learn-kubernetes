@@ -57,7 +57,17 @@ metadata:
 spec:
   mtls:
     mode: STRICT  # Enforce mTLS for all services in this namespace
-
-
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+ name: nginx
+spec:
+  selector:
+    matchLabels:
+      appName: nginx
+  action: ALLOW
+  rules:
+    - {}
 
 
