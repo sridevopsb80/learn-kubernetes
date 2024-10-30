@@ -49,6 +49,15 @@ spec:
         path: /
         pathType: Prefix
 
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+spec:
+  mtls:
+    mode: STRICT  # Enforce mTLS for all services in this namespace
+
 
 
 
