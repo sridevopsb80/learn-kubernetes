@@ -28,6 +28,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx
+  annotations:
+    alb.ingress.kubernetes.io/group.name: roboshop
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   ingressClassName: alb
   rules:
