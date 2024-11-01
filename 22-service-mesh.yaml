@@ -118,3 +118,85 @@ spec:
 #   containers:
 #     - name: debug
 #       image: rkalluru/debug
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx
+  annotations:
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:633788536644:certificate/764c1d94-5562-48f4-be92-fca22568f53d
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: roboshop
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  ingressClassName: alb
+  rules:
+  - host: nginx-test.rdevopsb80.online
+    http:
+      paths:
+      - backend:
+          service:
+            name: nginx
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+spec:
+  mtls:
+    mode: STRICT  # Enforce mTLS for all services in this namespace
+---
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+ name: nginx
+spec:
+  selector:
+    matchLabels:
+      appName: nginx
+  action: ALLOW
+  rules:
+    - {}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: nginx
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - nginx
+  http:
+  - match:
+    - uri:
+        exact: /
+    route:
+    - destination:
+        host: nginx
+        port:
+          number: 80
