@@ -1,3 +1,5 @@
+#To create a pod with nginx image
+
 apiVersion: v1
 kind: Pod
 metadata:

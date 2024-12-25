@@ -1,8 +1,10 @@
+# To create a replicaset and to maintain pods with that
+
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: rs-01
-  labels:
+  labels: #label for replicaset
     app: nginx
   annotations:
     controller.kubernetes.io/pod-deletion-cost: "10"
@@ -10,11 +12,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: nginx #has to match the label of the pod described below. this is how pods are identified and determination happens on which rs a pod belongs to. so, label needs to be unique
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx #label for pod
     spec:
       containers:
       - name: nginx

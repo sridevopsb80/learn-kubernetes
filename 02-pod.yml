@@ -1,4 +1,4 @@
-# Multiple containers
+# To create a pod with multiple containers
 
 apiVersion: v1
 kind: Pod
