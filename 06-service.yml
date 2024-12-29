@@ -1,3 +1,5 @@
+#create a pod with nginx image
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -11,6 +13,8 @@ spec:
       image: docker.io/nginx
 
 ---
+
+#create a service and associate with nginx pod
 apiVersion: v1
 kind: Service
 metadata:
@@ -21,10 +25,11 @@ spec:
     example: service
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 80 #service port
+      targetPort: 80 #container port
 
 ---
+#create a debug pod
 apiVersion: v1
 kind: Pod
 metadata:
@@ -34,6 +39,7 @@ spec:
     - name: debug
       image: docker.io/rkalluru/debug
 ---
+#create a nodeport. if the nodeport is not specifically mentioned, a random port is opened.
 apiVersion: v1
 kind: Service
 metadata:

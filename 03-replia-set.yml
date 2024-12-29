@@ -6,6 +6,7 @@ metadata:
   name: rs-01
   labels: #label for replicaset
     app: nginx
+    #setting pod deletion cost
   annotations:
     controller.kubernetes.io/pod-deletion-cost: "10"
 spec:
