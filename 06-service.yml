@@ -53,7 +53,9 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      #nodePort: 30007 - an example. since this is not defined here, it will be random
 ---
+#create a load balancer
 apiVersion: v1
 kind: Service
 metadata:
