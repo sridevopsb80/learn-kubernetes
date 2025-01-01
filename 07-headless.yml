@@ -1,3 +1,5 @@
+#deploying nginx service and headless service to observe differences
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:

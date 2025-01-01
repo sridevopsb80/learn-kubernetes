@@ -1,3 +1,6 @@
+#https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+#request - will be allocated
+#limit - not a guarantee. might be allocated based on need
 ---
 apiVersion: v1
 kind: Pod

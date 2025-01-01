@@ -11,6 +11,8 @@ spec:
         value: "hello from catalogue"
 
 ---
+#defining a config map to pass the values
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -20,6 +22,8 @@ data:
   CART_HOST: "cart"
 
 ---
+#creating a pod by obtaining specific values from config map
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -30,17 +34,21 @@ spec:
       image: docker.io/rkalluru/debug
       env:
       - name: CATALOGUE_HOST
+        #obtaining specific value from config map using valuefrom
         valueFrom:
           configMapKeyRef:
-            name: cm-07
+            name: cm-07 #config map name
             key: CATALOGUE_HOST
       - name: CART_HOST
+        #obtaining specific value from config map using valuefrom
         valueFrom:
           configMapKeyRef:
-            name: cm-07
+            name: cm-07 #config map name
             key: CART_HOST
 
 ---
+
+#creating a pod by obtaining all values from config map
 apiVersion: v1
 kind: Pod
 metadata:
@@ -49,15 +57,19 @@ spec:
   containers:
     - name: debug
       image: docker.io/rkalluru/debug
+      #envfrom is used to obtain all values from config map
       envFrom:
       - configMapRef:
           name: cm-07
 
 ---
+#creating a config file
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-07-file
+#service file info being passed with data parameter
 data:
   catalogue.service: |
     [Unit]
@@ -88,6 +100,7 @@ data:
     WantedBy=multi-user.target
 
 ---
+#mounting a config file (file created in previous section)
 apiVersion: v1
 kind: Pod
 metadata:
@@ -98,21 +111,25 @@ spec:
       image: docker.io/rkalluru/debug
       volumeMounts:
       - name: config-volume
-        mountPath: /etc/config
+        mountPath: /etc/config #being mounted to /etc/config
   volumes:
     - name: config-volume
       configMap:
-        name: cm-07-file
+        name: cm-07-file #file created in the previous section
 
 ---
+#secrets - key/value can be defined or secrets file can be mounted
+#refer https://kubernetes.io/docs/concepts/configuration/secret/ for example on how secrets can be mounted
+#creating a file for secrets
 apiVersion: v1
 kind: Secret
 metadata:
   name: secret-07-1
 data:
   password: YWJjZEAxMjM0
-
+#secrets need to be provided in base64 format
 ---
+#providing secrets info directly as mentioned in the above section is not desirable. referencing the secret file created above using secretkeyref
 apiVersion: v1
 kind: Pod
 metadata:

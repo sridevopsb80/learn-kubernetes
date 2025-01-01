@@ -4,7 +4,7 @@ metadata:
   name: frontend
   namespace: roboshop
 spec:
-  type: LoadBalancer
+  type: LoadBalancer #frontend comes with a load balancer
   selector:
     appName: frontend
   ports:
@@ -24,6 +24,7 @@ spec:
   containers:
     - name: frontend
       image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+      #declaring env variables for the container
       env:
         - name: CATALOGUE_HOST
           value: "catalogue"
@@ -46,3 +47,4 @@ spec:
         - name: PAYMENT_PORT
           value: "8080"
 
+#config maps should be used to define all the above config. refer to 08-config-management.yml for example
